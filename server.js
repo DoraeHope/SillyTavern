@@ -49,6 +49,7 @@ import multerMonkeyPatch from './src/middleware/multerMonkeyPatch.js';
 import initRequestProxy from './src/request-proxy.js';
 import getCacheBusterMiddleware from './src/middleware/cacheBuster.js';
 import corsProxyMiddleware from './src/middleware/corsProxy.js';
+import authMiddleware from './middlewares/auth.js';
 import {
     getVersion,
     color,
@@ -158,6 +159,7 @@ app.use(cookieSession({
 }));
 
 app.use(setUserDataMiddleware);
+app.use(authMiddleware);
 
 // CSRF Protection //
 if (!cliArgs.disableCsrf) {
